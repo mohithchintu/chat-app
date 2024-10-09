@@ -21,7 +21,7 @@ const Chat = () => {
     const fetchMessages = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/chats/${chatid}`
+          `http://localhost:5002/api/chats/${chatid}`
         );
         setMessages(response.data.chats);
       } catch (err) {
@@ -32,13 +32,13 @@ const Chat = () => {
     // fetchMessages();
 
     // Dummy data can remain in place of the above fetch
-    const interval = setInterval(fetchMessages, 5000); // Poll for new messages
+    const interval = setInterval(fetchMessages, 5002); // Poll for new messages
     return () => clearInterval(interval);
   }, [chatid]);
 
   const handleSendMessage = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/api/chats/add", {
+      const response = await axios.post("http://localhost:5002/api/chats/add", {
         chatid,
         sender: user._id,
         message: newMessage,
