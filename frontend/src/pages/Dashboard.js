@@ -9,7 +9,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/users");
+        const response = await axios.get("http://localhost:5002/api/users");
         const filteredUsers = response.data.filter((u) => u._id !== user._id);
         setUsers(filteredUsers);
       } catch (err) {
@@ -22,7 +22,7 @@ const Dashboard = () => {
   const handleMatch = async (otherUserId) => {
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/users/add-match/${user._id}`,
+        `http://localhost:5002/api/users/add-match/${user._id}`,
         {
           uid: otherUserId,
         }
